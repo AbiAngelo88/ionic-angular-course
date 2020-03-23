@@ -74,4 +74,24 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  // Aggiungiamo una variabile (Sezione Advanced in ionic Themes site) che ha come valore la viabile primary.
+  // il secondo input della funzione var() è il valore di default nel caso il primo valore non sia trovato
+  --ion-toolbar-background: var(--ion-color-primary, black);
+  --ion-toolbar-color: var(--ion-color-primary-contrast);
+}
+
+// Per sovrascrivere lo stile dei componenti di ionic. Nella documentazione ci sono tutte le classi da racchiudeere nel selettore.
+// ion-button {
+//   --background: var(--ion-color-primary);
+// }
+
+// ios: è la classe inserita da ionic sulla root quando si una un dispositivo ios
+.ios {
+
+}
+
+// Material design: è la classe inserita da ionic sulla root quando si usa un desktop o un dispositivo android
+.md {
+
 }

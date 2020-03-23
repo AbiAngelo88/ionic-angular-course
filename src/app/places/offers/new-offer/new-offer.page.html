@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/places/tabs/offers"></ion-back-button>
+    </ion-buttons>
+    <ion-title>New Offer</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button [disabled]="form?.invalid" (click)="onCreateOffer()">
+        <ion-icon name="checkmark" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+    <ion-grid>
+      <!-- class="ion-align-items-center" -> allinea verticalmente.. il default è stretch -->
+      <!-- class="ion-justify-content-center" -> allinea orizzontalmente.. il default è center -->
+      <ion-row> 
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating"> Title </ion-label>
+            <ion-input formControlName="title" type="text" autocomplete autocorrect></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row> 
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating"> Description </ion-label>
+            <ion-textarea formControlName="description" rows="3"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="form.get('description').invalid && form.get('description').touched">
+        <ion-col size-sm="6" offset-sm="3">
+          <p> Description mast not be longer than 180 characters.</p>
+        </ion-col>
+      </ion-row>
+      <ion-row> 
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating"> Price </ion-label>
+            <ion-input formControlName="price" type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row> 
+        <ion-col size-sm="3" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating"> Avaible from </ion-label>
+            <ion-datetime formControlName="dateFrom" min="2020-03-22" max="2021-03-22"></ion-datetime>
+          </ion-item>
+        </ion-col>
+        <ion-col size-sm="3">
+          <ion-item>
+            <ion-label position="floating"> Avaible To </ion-label>
+            <ion-datetime formControlName="dateTo" min="2020-03-23" max="2021-03-22"></ion-datetime>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title> {{ isLogin ? 'Login' : 'Signup' }} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- ESEMPIO DI TEMPLATE DRIVER FORM -->
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-list>
+            <ion-item>
+              <ion-label position="floating">E-Mail</ion-label>
+              <ion-input ngModel type="email" required email name="email" #emailCtrl="ngModel"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="emailCtrl?.invalid && emailCtrl?.touched" lines="none">
+              <ion-label> Should be a valid email address</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Password</ion-label>
+              <ion-input ngModel type="password" required minlength="6" name="password" #passwordCtrl="ngModel"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="passwordCtrl?.invalid && passwordCtrl?.touched" lines="none">
+              <ion-label> Should be a valid password: minimum 6 chars</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3"> 
+          <!-- <div class="ion-text-center ion-padding">
+            <ion-spinner *ngIf="isLoading"></ion-spinner>
+          </div> -->
+          <ion-button type="button" color="primary" fill="clear" (click)="onSwitchAuthMode()" expand="full"> Switch to {{ isLogin ? 'Signup' : 'Login'}} </ion-button >
+          <ion-button type="submit" [disabled]="f.invalid" (click)="onLogin()" fill="outline" expand="block"> Login </ion-button >
+          </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

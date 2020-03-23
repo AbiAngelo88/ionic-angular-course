@@ -16,7 +16,7 @@
     "interface-name": false,
     "max-classes-per-file": false,
     "max-line-length": [
-      true,
+      false,
       140
     ],
     "member-access": false,
@@ -60,6 +60,11 @@
       true,
       "single"
     ],
+    "variable-name": {
+      "options": [
+        "allow-leading-underscore"
+      ]
+    },
     "trailing-comma": false,
     "no-output-on-prefix": true,
     "no-inputs-metadata-property": true,
