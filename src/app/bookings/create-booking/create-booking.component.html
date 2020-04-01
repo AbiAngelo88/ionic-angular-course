@@ -45,29 +45,29 @@
         <ion-col size-sm="3" offset-sm="3"> 
           <ion-item>
             <ion-label position="floating"> From</ion-label>
-            <ion-datetime required ngModel #startDateCtrl="ngModel"
+            <ion-datetime required [ngModel]="startDate" #startDateCtrl="ngModel"
               name="date-from" 
               display-format="MMM DD YYYY" 
               picker-format="YY MMM DD" 
-              [min]="" [max]="">
+              [min]="selectedPlace?.avaibleFrom?.toISOString()" [max]="selectedPlace?.avaibleTo?.toISOString()">
             </ion-datetime>
           </ion-item>
         </ion-col>
         <ion-col size-sm="3" offset-sm="3"> 
           <ion-item>
             <ion-label position="floating"> To</ion-label>
-            <ion-datetime required ngModel
+            <ion-datetime required [ngModel]="endDate"
               name="date-to" 
               display-format="MMM DD YYYY" 
               picker-format="YY MMM DD" 
-              [min]="startDateCtrl.value" [max]="">
+              [min]="startDateCtrl.value" [max]="selectedPlace?.avaibleTo?.toISOString()">
             </ion-datetime>
           </ion-item>
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col size-sm="3" offset-sm="3">
-          <ion-button type="submit" color="primary">Book!</ion-button>
+        <ion-col size-sm="3">
+          <ion-button type="submit" color="primary" [disabled]="form?.invalid || !datesValid()">Book!</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
